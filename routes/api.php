@@ -3,6 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Resources\User as UserResource;
+use App\Http\Resources\UserCollection;
+
+use App\User;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,4 +21,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/user', function () {
+    return UserResource::collection(User::all());
+});
+
+Route::get('/users', function () {
+    return new UserCollection(User::all());
 });

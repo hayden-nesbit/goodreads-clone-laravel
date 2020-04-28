@@ -29,11 +29,11 @@ class CreateContainersTable extends Migration
         Schema::create('book_container', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('book_id');
-            // $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('container_id');
             $table->timestamps();
 
-            $table->unique(['book_id', 'container_id']);
+            $table->unique(['book_id', 'container_id', 'user_id']);
 
             $table->foreign('book_id')
                 ->references('id')

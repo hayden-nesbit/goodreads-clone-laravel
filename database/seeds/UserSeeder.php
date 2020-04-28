@@ -33,13 +33,21 @@ class UserSeeder extends Seeder
                 'book_id' => $i,
                 'author_id' => rand(1, 65)
             ]);
+        }
 
+        $containerCount = 3;
+        for($i = 1; $i <= $userCount; $i++){
             DB::table('book_container')->insert([
                 'book_id' => $i,
                 'container_id' => $i
+        ]);
+            for($j = 1; $j <= $containerCount; $j++){
+                DB::table('book_container')->insert([
+                    'book_id' => $i,
+                    'user_id' => $j
             ]);
+            }
         }
-
 
     }
 }

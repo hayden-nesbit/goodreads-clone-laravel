@@ -14,24 +14,32 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Book::class, 100)->create();
         factory(App\User::class, 50)->create();
         factory(App\Author::class, 65)->create();
+        factory(App\Book::class, 100)->create();
 
+        $userCount = 50;
+        for($i = 1; $i <= $userCount; $i++){
+            DB::table('containers')->insert(array(
+                array('name' => 'want-to-read', 'created_by' => $i),
+                array('name' => 'currently-reading', 'created_by' => $i),
+                array('name' => 'read', 'created_by' => $i)
+            ));
+        }
+        
         $bookCount = 100;
         for($i = 1; $i <= $bookCount; $i++){
             DB::table('author_book')->insert([
                 'book_id' => $i,
                 'author_id' => rand(1, 65)
             ]);
-        }
 
-        $shelfCount = 5;
-        for($i = 1; $i <= $shelfCount; $i++){
-            DB::table('shelves')->insert([
-                'book_id' => rand(1, 100),
-                'user_id' => rand(1, 50)
+            DB::table('book_container')->insert([
+                'book_id' => $i,
+                'container_id' => $i
             ]);
         }
+
+
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Shelf extends Model
+class Container extends Model
 {
     public function book() {
 

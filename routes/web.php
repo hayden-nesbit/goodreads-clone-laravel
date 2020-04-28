@@ -25,5 +25,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/users', function () {
-    return new UserCollection(User::all());
+    return response()->json(new UserCollection(User::all()));
 });

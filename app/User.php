@@ -42,8 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function shelves(){
+    public function containers(){
         
-        return $this->hasMany(Shelf::class);
+        return $this->hasMany(Container::class);
     }
 }

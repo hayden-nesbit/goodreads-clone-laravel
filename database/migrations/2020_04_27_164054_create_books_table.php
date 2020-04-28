@@ -21,6 +21,7 @@ class CreateBooksTable extends Migration
             $table->integer('pages');
             $table->timestamps();
         });
+
     }
 
     /**

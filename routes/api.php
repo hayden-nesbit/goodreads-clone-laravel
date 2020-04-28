@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Resources\User as UserResource;
-use App\Http\Resources\UserCollection;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 use App\User;
 
@@ -28,5 +28,5 @@ Route::get('/user', function () {
 });
 
 Route::get('/users', function () {
-    return new UserCollection(User::all());
+    return response()->json(new UserCollection(User::all()));
 });

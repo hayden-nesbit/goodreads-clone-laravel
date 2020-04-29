@@ -23,10 +23,36 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/user', function () {
-    return UserResource::collection(User::all());
+
+Route::get('/users', 'UserController@index');
+Route::get('/users/{$id}', 'UserController@show');
+Route::post('/users', 'UserController@store');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::post('register', 'AuthController@register');
+Route::post('login', 'AuthController@login');
+
+Route::middleware('auth:api')->group(function() {
+    
+    Route::get('user/{userId}/detail', 'UserController@show');
 });
 
-Route::get('/users', function () {
-    return new UserCollection(User::all());
-});
+
+// Route::post('/users',)
+
+// Route::group([
+//     'prefix' => 'auth'
+// ], function () {
+//     Route::post('login', 'AuthController@login');
+//     Route::post('signup', 'AuthController@signup');
+  
+//     Route::group([
+//       'middleware' => 'auth:api'
+//     ], function() {
+//         Route::get('logout', 'AuthController@logout');
+//         Route::get('user', 'AuthController@user');
+//     });
+// });

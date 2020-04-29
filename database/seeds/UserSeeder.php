@@ -15,8 +15,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         factory(App\User::class, 50)->create();
-        factory(App\Author::class, 65)->create();
         factory(App\Book::class, 100)->create();
+        factory(App\Author::class, 65)->create();
 
         $userCount = 50;
         for($i = 1; $i <= $userCount; $i++){
@@ -39,7 +39,8 @@ class UserSeeder extends Seeder
         for($i = 1; $i <= $userCount; $i++){
             DB::table('book_container')->insert([
                 'book_id' => $i,
-                'container_id' => $i
+                'container_id' => $i,
+
         ]);
             for($j = 1; $j <= $containerCount; $j++){
                 DB::table('book_container')->insert([

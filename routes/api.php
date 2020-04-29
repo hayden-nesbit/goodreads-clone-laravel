@@ -28,5 +28,5 @@ Route::get('/user', function () {
 });
 
 Route::get('/users', function () {
-    return response()->json(new UserCollection(User::all()));
+    return new UserCollection(User::all());
 });

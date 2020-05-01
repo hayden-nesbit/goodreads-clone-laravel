@@ -24,9 +24,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/users', 'UserController@index');
-Route::get('/users/{$id}', 'UserController@show');
-Route::post('/users', 'UserController@store');
+Route::get('/users', 'UsersController@index');
+Route::get('/users/{$id}', 'UsersController@show');
+Route::post('/users', 'UsersController@store');
+Route::get('/books', 'BookController@index');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -28,6 +28,8 @@ Route::get('/users', 'UsersController@index');
 Route::get('/users/{$id}', 'UsersController@show');
 Route::post('/users', 'UsersController@store');
 Route::get('/books', 'BookController@index');
+Route::get('authors', 'AuthorsController@index');
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');
